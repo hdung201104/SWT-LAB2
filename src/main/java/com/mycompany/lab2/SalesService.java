@@ -21,7 +21,8 @@ public class SalesService {
         if (subtotal < 1000) {
             return 0;
         } else if (subtotal < 5000) {
-            return subtotal * 0.10;
+            // SỬA LỖI B02: Đổi từ 0.10 (10%) thành 0.05 (5%) theo đúng quy định nghiệp vụ
+            return subtotal * 0.05;
         } else if (subtotal < 10000) {
             return subtotal * 0.10;
         } else {
