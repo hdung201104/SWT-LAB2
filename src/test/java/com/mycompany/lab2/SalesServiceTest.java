@@ -115,8 +115,6 @@ public class SalesServiceTest {
     @DisplayName("calculateTotal: subtotal 1000, discount 50, shipping 50 -> total = 1000 - 50 + 50 = 1000.0")
     void testCalculateTotal_StandardProduct() {
         Product p = new Product("P01", "Monitor", 500.0, 2);
-        // subtotal = 1000.0, discount = 50.0, shipping = 50.0
-        // Mong đợi = 1000 - 50 + 50 = 1000.0
         assertEquals(1000.0, service.calculateTotal(p), 0.001);
     }
 
@@ -124,8 +122,35 @@ public class SalesServiceTest {
     @DisplayName("calculateTotal: subtotal 6000, discount 600, shipping 0 -> total = 6000 - 600 + 0 = 5400.0")
     void testCalculateTotal_HighValueProduct() {
         Product p = new Product("P02", "HighEnd Laptop", 3000.0, 2);
-        // subtotal = 6000.0, discount = 600.0, shipping = 0.0
-        // Mong đợi = 6000 - 600 + 0 = 5400.0
         assertEquals(5400.0, service.calculateTotal(p), 0.001);
+    }
+
+    // ==========================================
+    // 5. UNIT TEST CHO HÀM 5: classifyCustomer() (Ít nhất 4 tests)
+    // ==========================================
+
+    @Test
+    @DisplayName("classifyCustomer: total < 1000 (999.99) -> REGULAR")
+    void testClassifyCustomer_Regular() {
+        assertEquals("REGULAR", service.classifyCustomer(999.99));
+    }
+
+    @Test
+    @DisplayName("classifyCustomer: 1000 <= total < 5000 (1000.0) -> SILVER")
+    void testClassifyCustomer_Silver() {
+        assertEquals("SILVER", service.classifyCustomer(1000.0));
+    }
+
+    @Test
+    @DisplayName("classifyCustomer: 5000 <= total < 10000 (5000.0) -> GOLD")
+    void testClassifyCustomer_Gold() {
+        assertEquals("GOLD", service.classifyCustomer(5000.0));
+    }
+
+    @Test
+    @DisplayName("classifyCustomer: total >= 10000 (10000.0) -> VIP")
+    void testClassifyCustomer_Vip() {
+        // Mốc 10000.0 trở lên phải là VIP (Code của cô đang dính bug B05 trả về GOLD!)
+        assertEquals("VIP", service.classifyCustomer(10000.0));
     }
 }
