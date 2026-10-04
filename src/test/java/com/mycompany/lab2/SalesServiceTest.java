@@ -98,7 +98,6 @@ public class SalesServiceTest {
     @Test
     @DisplayName("calculateShippingFee: subtotal == 2000.0 -> Miễn phí giao hàng (0.0)")
     void testCalculateShippingFee_Exactly2000() {
-        // Đơn từ 2000 trở lên được miễn phí giao hàng (0.0)
         assertEquals(0.0, service.calculateShippingFee(2000.0), 0.001);
     }
 
@@ -106,5 +105,27 @@ public class SalesServiceTest {
     @DisplayName("calculateShippingFee: subtotal > 2000 (5000.0) -> Miễn phí giao hàng (0.0)")
     void testCalculateShippingFee_Over2000() {
         assertEquals(0.0, service.calculateShippingFee(5000.0), 0.001);
+    }
+
+    // ==========================================
+    // 4. UNIT TEST CHO HÀM 4: calculateTotal() (Ít nhất 2 tests)
+    // ==========================================
+
+    @Test
+    @DisplayName("calculateTotal: subtotal 1000, discount 50, shipping 50 -> total = 1000 - 50 + 50 = 1000.0")
+    void testCalculateTotal_StandardProduct() {
+        Product p = new Product("P01", "Monitor", 500.0, 2);
+        // subtotal = 1000.0, discount = 50.0, shipping = 50.0
+        // Mong đợi = 1000 - 50 + 50 = 1000.0
+        assertEquals(1000.0, service.calculateTotal(p), 0.001);
+    }
+
+    @Test
+    @DisplayName("calculateTotal: subtotal 6000, discount 600, shipping 0 -> total = 6000 - 600 + 0 = 5400.0")
+    void testCalculateTotal_HighValueProduct() {
+        Product p = new Product("P02", "HighEnd Laptop", 3000.0, 2);
+        // subtotal = 6000.0, discount = 600.0, shipping = 0.0
+        // Mong đợi = 6000 - 600 + 0 = 5400.0
+        assertEquals(5400.0, service.calculateTotal(p), 0.001);
     }
 }
