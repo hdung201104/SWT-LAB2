@@ -51,8 +51,8 @@ public class SalesService {
 
         double shipping = calculateShippingFee(subtotal);
 
-        // THỬ SỬA LẦN 1 (THỬ SỬA VẪN SAI THEO Ý BẠN): Quên không cộng phí giao hàng shipping -> Test vẫn ĐỎ ❌
-        return subtotal - discount;
+        // SỬA ĐÚNG B04: Đổi '+ discount' thành '- discount + shipping'
+        return subtotal - discount + shipping;
     }
 
     public String classifyCustomer(double total) {
