@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.lab2.SalesServiceTest
 -------------------------------------------------------------------------------
-Tests run: 18, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.321 s <<< FAILURE! -- in com.mycompany.lab2.SalesServiceTest
-com.mycompany.lab2.SalesServiceTest.testClassifyCustomer_Vip -- Time elapsed: 0.019 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <VIP> but was: <GOLD>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-	at com.mycompany.lab2.SalesServiceTest.testClassifyCustomer_Vip(SalesServiceTest.java:154)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.293 s -- in com.mycompany.lab2.SalesServiceTest

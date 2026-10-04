@@ -51,7 +51,7 @@ public class SalesService {
 
         double shipping = calculateShippingFee(subtotal);
 
-        // SỬA ĐÚNG B04: Đổi '+ discount' thành '- discount + shipping'
+        // Đã sửa B04
         return subtotal - discount + shipping;
     }
 
@@ -60,7 +60,8 @@ public class SalesService {
             return "REGULAR";
         } else if (total < 5000) {
             return "SILVER";
-        } else if (total <= 10000) {
+        } else if (total < 10000) {
+            // SỬA LỖI B05: Đổi '<=' thành '<' để mốc 10000.0 trở lên được phân loại đúng là VIP
             return "GOLD";
         } else {
             return "VIP";
