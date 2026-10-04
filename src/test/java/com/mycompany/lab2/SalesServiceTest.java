@@ -52,42 +52,59 @@ public class SalesServiceTest {
     @Test
     @DisplayName("calculateDiscount Boundary 1: subtotal 999.99 -> Giảm 0% (0.0)")
     void testCalculateDiscount_Boundary_999_99() {
-        // subtotal < 1000 -> 0%
         assertEquals(0.0, service.calculateDiscount(999.99), 0.001);
     }
 
     @Test
     @DisplayName("calculateDiscount Boundary 2: subtotal 1000.0 -> Giảm 5% (50.0)")
     void testCalculateDiscount_Boundary_1000_0() {
-        // 1000 <= subtotal < 5000 -> 5% (1000 * 0.05 = 50.0)
         assertEquals(50.0, service.calculateDiscount(1000.0), 0.001);
     }
 
     @Test
     @DisplayName("calculateDiscount Boundary 3: subtotal 4999.99 -> Giảm 5% (249.9995)")
     void testCalculateDiscount_Boundary_4999_99() {
-        // 4999.99 * 0.05 = 249.9995
         assertEquals(249.9995, service.calculateDiscount(4999.99), 0.001);
     }
 
     @Test
     @DisplayName("calculateDiscount Boundary 4: subtotal 5000.0 -> Giảm 10% (500.0)")
     void testCalculateDiscount_Boundary_5000_0() {
-        // 5000 <= subtotal < 10000 -> 10% (5000 * 0.10 = 500.0)
         assertEquals(500.0, service.calculateDiscount(5000.0), 0.001);
     }
 
     @Test
     @DisplayName("calculateDiscount Boundary 5: subtotal 9999.99 -> Giảm 10% (999.999)")
     void testCalculateDiscount_Boundary_9999_99() {
-        // 9999.99 * 0.10 = 999.999
         assertEquals(999.999, service.calculateDiscount(9999.99), 0.001);
     }
 
     @Test
     @DisplayName("calculateDiscount Boundary 6: subtotal 10000.0 -> Giảm 15% (1500.0)")
     void testCalculateDiscount_Boundary_10000_0() {
-        // subtotal >= 10000 -> 15% (10000 * 0.15 = 1500.0)
         assertEquals(1500.0, service.calculateDiscount(10000.0), 0.001);
+    }
+
+    // ==========================================
+    // 3. UNIT TEST CHO HÀM 3: calculateShippingFee() (Ít nhất 3 tests)
+    // ==========================================
+
+    @Test
+    @DisplayName("calculateShippingFee: subtotal < 2000 (1999.99) -> Phí giao hàng 50.0")
+    void testCalculateShippingFee_Under2000() {
+        assertEquals(50.0, service.calculateShippingFee(1999.99), 0.001);
+    }
+
+    @Test
+    @DisplayName("calculateShippingFee: subtotal == 2000.0 -> Miễn phí giao hàng (0.0)")
+    void testCalculateShippingFee_Exactly2000() {
+        // Đơn từ 2000 trở lên được miễn phí giao hàng (0.0)
+        assertEquals(0.0, service.calculateShippingFee(2000.0), 0.001);
+    }
+
+    @Test
+    @DisplayName("calculateShippingFee: subtotal > 2000 (5000.0) -> Miễn phí giao hàng (0.0)")
+    void testCalculateShippingFee_Over2000() {
+        assertEquals(0.0, service.calculateShippingFee(5000.0), 0.001);
     }
 }

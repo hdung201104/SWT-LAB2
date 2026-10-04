@@ -8,7 +8,7 @@
                     &quot;Product cannot be null&quot;);
         }
 
-        // SỬA LỖI B01: Đổi phép cộng '+' thành phép nhân '*'
+        // Đã sửa B01
 <span class="fc" id="L12">        return product.getPrice() * product.getQuantity();</span>
     }
 
@@ -21,7 +21,7 @@
 <span class="fc bfc" id="L21" title="All 2 branches covered.">        if (subtotal &lt; 1000) {</span>
 <span class="fc" id="L22">            return 0;</span>
 <span class="fc bfc" id="L23" title="All 2 branches covered.">        } else if (subtotal &lt; 5000) {</span>
-            // SỬA LỖI B02: Đổi từ 0.10 (10%) thành 0.05 (5%) theo đúng quy định nghiệp vụ
+            // Đã sửa B02
 <span class="fc" id="L25">            return subtotal * 0.05;</span>
 <span class="fc bfc" id="L26" title="All 2 branches covered.">        } else if (subtotal &lt; 10000) {</span>
 <span class="fc" id="L27">            return subtotal * 0.10;</span>
@@ -31,37 +31,38 @@
     }
 
     public double calculateShippingFee(double subtotal) {
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (subtotal &lt; 0) {</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if (subtotal &lt; 0) {</span>
 <span class="nc" id="L35">            throw new IllegalArgumentException(</span>
                     &quot;Subtotal cannot be negative&quot;);
         }
 
-<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (subtotal &lt;= 2000) {</span>
-<span class="nc" id="L40">            return 50;</span>
+        // ĐÃ SỬA B03: Đổi từ '&lt;=' thành '&lt;' (Subtotal từ 2000 trở lên được miễn phí 0.0)
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (subtotal &lt; 2000) {</span>
+<span class="fc" id="L41">            return 50;</span>
         }
 
-<span class="nc" id="L43">        return 0;</span>
+<span class="fc" id="L44">        return 0;</span>
     }
 
     public double calculateTotal(Product product) {
-<span class="nc" id="L47">        double subtotal = calculateSubtotal(product);</span>
+<span class="nc" id="L48">        double subtotal = calculateSubtotal(product);</span>
 
-<span class="nc" id="L49">        double discount = calculateDiscount(subtotal);</span>
+<span class="nc" id="L50">        double discount = calculateDiscount(subtotal);</span>
 
-<span class="nc" id="L51">        double shipping = calculateShippingFee(subtotal);</span>
+<span class="nc" id="L52">        double shipping = calculateShippingFee(subtotal);</span>
 
-<span class="nc" id="L53">        return subtotal + discount + shipping;</span>
+<span class="nc" id="L54">        return subtotal + discount + shipping;</span>
     }
 
     public String classifyCustomer(double total) {
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (total &lt; 1000) {</span>
-<span class="nc" id="L58">            return &quot;REGULAR&quot;;</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">        } else if (total &lt; 5000) {</span>
-<span class="nc" id="L60">            return &quot;SILVER&quot;;</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        } else if (total &lt;= 10000) {</span>
-<span class="nc" id="L62">            return &quot;GOLD&quot;;</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (total &lt; 1000) {</span>
+<span class="nc" id="L59">            return &quot;REGULAR&quot;;</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        } else if (total &lt; 5000) {</span>
+<span class="nc" id="L61">            return &quot;SILVER&quot;;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        } else if (total &lt;= 10000) {</span>
+<span class="nc" id="L63">            return &quot;GOLD&quot;;</span>
         } else {
-<span class="nc" id="L64">            return &quot;VIP&quot;;</span>
+<span class="nc" id="L65">            return &quot;VIP&quot;;</span>
         }
     }
 }

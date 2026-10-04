@@ -8,7 +8,7 @@ public class SalesService {
                     "Product cannot be null");
         }
 
-        // SỬA LỖI B01: Đổi phép cộng '+' thành phép nhân '*'
+        // Đã sửa B01
         return product.getPrice() * product.getQuantity();
     }
 
@@ -21,7 +21,7 @@ public class SalesService {
         if (subtotal < 1000) {
             return 0;
         } else if (subtotal < 5000) {
-            // SỬA LỖI B02: Đổi từ 0.10 (10%) thành 0.05 (5%) theo đúng quy định nghiệp vụ
+            // Đã sửa B02
             return subtotal * 0.05;
         } else if (subtotal < 10000) {
             return subtotal * 0.10;
@@ -36,6 +36,7 @@ public class SalesService {
                     "Subtotal cannot be negative");
         }
 
+        // GIỮ NGUYÊN CODE LỖI B03 CỦA CÔ ĐỂ CHẠY TEST ĐỎ BÊN GITHUB ACTIONS
         if (subtotal <= 2000) {
             return 50;
         }
