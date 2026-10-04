@@ -36,7 +36,7 @@ public class SalesService {
                     "Subtotal cannot be negative");
         }
 
-        // SỬA LỖI B03: Đổi từ '<=' thành '<' (Subtotal từ 2000 trở lên là miễn phí 0.0)
+        // Đã sửa B03
         if (subtotal < 2000) {
             return 50;
         }
@@ -51,7 +51,8 @@ public class SalesService {
 
         double shipping = calculateShippingFee(subtotal);
 
-        return subtotal + discount + shipping;
+        // THỬ SỬA LẦN 1 (THỬ SỬA VẪN SAI THEO Ý BẠN): Quên không cộng phí giao hàng shipping -> Test vẫn ĐỎ ❌
+        return subtotal - discount;
     }
 
     public String classifyCustomer(double total) {
