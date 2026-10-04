@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Product.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LAB2</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.lab2</a> &gt; <span class="el_source">Product.java</span></div><h1>Product.java</h1><pre class="source lang-java linenums">package com.mycompany.lab2;
+
+public class Product {
+
+    private String productId;
+    private String productName;
+    private double price;
+    private int quantity;
+
+<span class="fc" id="L10">    public Product(String productId, String productName, double price, int quantity) {</span>
+<span class="pc bpc" id="L11" title="2 of 4 branches missed.">        if (productId == null || productId.isEmpty()) {</span>
+<span class="nc" id="L12">            throw new IllegalArgumentException(</span>
+                    &quot;Product ID is required&quot;);
+        }
+
+<span class="pc bpc" id="L16" title="2 of 4 branches missed.">        if (productName == null || productName.isEmpty()) {</span>
+<span class="nc" id="L17">            throw new IllegalArgumentException(</span>
+                    &quot;Product name is required&quot;);
+        }
+
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if (price &lt;= 0) {</span>
+<span class="nc" id="L22">            throw new IllegalArgumentException(</span>
+                    &quot;Price must be greater than 0&quot;);
+        }
+
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">        if (quantity &lt;= 0) {</span>
+<span class="nc" id="L27">            throw new IllegalArgumentException(</span>
+                    &quot;Quantity must be greater than 0&quot;);
+        }
+
+<span class="fc" id="L31">        this.productId = productId;</span>
+<span class="fc" id="L32">        this.productName = productName;</span>
+<span class="fc" id="L33">        this.price = price;</span>
+<span class="fc" id="L34">        this.quantity = quantity;</span>
+<span class="fc" id="L35">    }</span>
+
+    public String getProductId() {
+<span class="nc" id="L38">        return productId;</span>
+    }
+
+    public String getProductName() {
+<span class="nc" id="L42">        return productName;</span>
+    }
+
+    public double getPrice() {
+<span class="fc" id="L46">        return price;</span>
+    }
+
+    public int getQuantity() {
+<span class="fc" id="L50">        return quantity;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -8,7 +8,8 @@ public class SalesService {
                     "Product cannot be null");
         }
 
-        return product.getPrice() + product.getQuantity();
+        // SỬA LỖI B01: Đổi phép cộng '+' thành phép nhân '*'
+        return product.getPrice() * product.getQuantity();
     }
 
     public double calculateDiscount(double subtotal) {
