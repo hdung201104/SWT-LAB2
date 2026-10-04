@@ -36,8 +36,8 @@ public class SalesService {
                     "Subtotal cannot be negative");
         }
 
-        // GIỮ NGUYÊN CODE LỖI B03 CỦA CÔ ĐỂ CHẠY TEST ĐỎ BÊN GITHUB ACTIONS
-        if (subtotal <= 2000) {
+        // SỬA LỖI B03: Đổi từ '<=' thành '<' (Subtotal từ 2000 trở lên là miễn phí 0.0)
+        if (subtotal < 2000) {
             return 50;
         }
 

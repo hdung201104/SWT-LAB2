@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.lab2.SalesServiceTest" time="0.242" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.lab2.SalesServiceTest" time="0.231" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.12.101-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\hdung\AppData\Local\Temp\surefire16672641581326786153\surefirebooter-20261004162253250_3.jar C:\Users\hdung\AppData\Local\Temp\surefire16672641581326786153 2026-10-04T16-22-52_960-jvmRun1 surefire-20261004162253250_1tmp surefire_0-20261004162253250_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\hdung\AppData\Local\Temp\surefire4686338657996662497\surefirebooter-20261004162421678_3.jar C:\Users\hdung\AppData\Local\Temp\surefire4686338657996662497 2026-10-04T16-24-21_356-jvmRun1 surefire-20261004162421678_1tmp surefire_0-20261004162421678_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\FPT\HK V\SWT\LAB2\target\test-classes;D:\FPT\HK V\SWT\LAB2\target\classes;C:\Users\hdung\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\hdung\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\hdung\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\hdung\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\hdung\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\hdung\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\hdung\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\hdung\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\hdung\AppData\Local\Temp\surefire16672641581326786153\surefirebooter-20261004162253250_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\hdung\AppData\Local\Temp\surefire4686338657996662497\surefirebooter-20261004162421678_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.12.1+1-LTS"/>
@@ -59,16 +59,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testCalculateDiscount_Boundary_1000_0" classname="com.mycompany.lab2.SalesServiceTest" time="0.123"/>
+  <testcase name="testCalculateDiscount_Boundary_1000_0" classname="com.mycompany.lab2.SalesServiceTest" time="0.112"/>
   <testcase name="testCalculateDiscount_Boundary_5000_0" classname="com.mycompany.lab2.SalesServiceTest" time="0.003"/>
-  <testcase name="testCalculateDiscount_Boundary_999_99" classname="com.mycompany.lab2.SalesServiceTest" time="0.003"/>
-  <testcase name="testCalculateShippingFee_Over2000" classname="com.mycompany.lab2.SalesServiceTest" time="0.003"/>
-  <testcase name="testCalculateDiscount_Boundary_4999_99" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
-  <testcase name="testCalculateSubtotal_ValidProduct" classname="com.mycompany.lab2.SalesServiceTest" time="0.005"/>
-  <testcase name="testCalculateDiscount_Boundary_9999_99" classname="com.mycompany.lab2.SalesServiceTest" time="0.003"/>
-  <testcase name="testCalculateShippingFee_Under2000" classname="com.mycompany.lab2.SalesServiceTest" time="0.003"/>
+  <testcase name="testCalculateDiscount_Boundary_999_99" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
+  <testcase name="testCalculateShippingFee_Over2000" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
+  <testcase name="testCalculateDiscount_Boundary_4999_99" classname="com.mycompany.lab2.SalesServiceTest" time="0.003"/>
+  <testcase name="testCalculateSubtotal_ValidProduct" classname="com.mycompany.lab2.SalesServiceTest" time="0.004"/>
+  <testcase name="testCalculateDiscount_Boundary_9999_99" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
+  <testcase name="testCalculateShippingFee_Under2000" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
   <testcase name="testCalculateDiscount_Boundary_10000_0" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
   <testcase name="testCalculateSubtotal_DecimalPrice" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
-  <testcase name="testCalculateSubtotal_NullProduct_ThrowsException" classname="com.mycompany.lab2.SalesServiceTest" time="0.005"/>
+  <testcase name="testCalculateSubtotal_NullProduct_ThrowsException" classname="com.mycompany.lab2.SalesServiceTest" time="0.004"/>
   <testcase name="testCalculateShippingFee_Exactly2000" classname="com.mycompany.lab2.SalesServiceTest" time="0.002"/>
 </testsuite>
