@@ -3,6 +3,8 @@ package com.mycompany.lab2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +18,7 @@ public class SalesServiceTest {
     }
 
     // ==========================================
-    // 1. UNIT TEST CHO HÀM 1: calculateSubtotal()
+    // 1. UNIT TEST CHO HÀM 1: calculateSubtotal() (Ít nhất 3 tests)
     // ==========================================
 
     @Test
@@ -36,7 +38,15 @@ public class SalesServiceTest {
     }
 
     @Test
-    @DisplayName("calculateSubtotal: Ném ngoại lệ khi Product bị null")
+    @DisplayName("calculateSubtotal: Giá biên 99.99, số lượng 2")
+    void testCalculateSubtotal_Boundary() {
+        Product p = new Product("P03", "Tablet", 99.99, 2);
+        // Mong đợi: 99.99 * 2 = 199.98
+        assertEquals(199.98, service.calculateSubtotal(p), 0.001);
+    }
+
+    @Test
+    @DisplayName("calculateSubtotal: Ném ngoại lệ khi Product bị null (Exception test)")
     void testCalculateSubtotal_NullProduct_ThrowsException() {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
@@ -46,7 +56,7 @@ public class SalesServiceTest {
     }
 
     // ==========================================
-    // 2. UNIT TEST CHO HÀM 2: calculateDiscount() (6 BOUNDARY VALUES)
+    // 2. UNIT TEST CHO HÀM 2: calculateDiscount() (6 BOUNDARY VALUES + EXCEPTION)
     // ==========================================
 
     @Test
@@ -85,6 +95,32 @@ public class SalesServiceTest {
         assertEquals(1500.0, service.calculateDiscount(10000.0), 0.001);
     }
 
+    @Test
+    @DisplayName("calculateDiscount: Ném ngoại lệ khi subtotal âm (Exception test)")
+    void testCalculateDiscount_NegativeSubtotal_ThrowsException() {
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> service.calculateDiscount(-100.0)
+        );
+        assertEquals("Subtotal cannot be negative", ex.getMessage());
+    }
+
+    // ==========================================
+    // TASK 3: PARAMETERIZED TEST CHO calculateDiscount() (1 ĐIỂM)
+    // ==========================================
+
+    @ParameterizedTest
+    @DisplayName("Task 3: ParameterizedTest cho calculateDiscount()")
+    @CsvSource({
+        "999.99, 0.0",
+        "1000.0, 50.0",
+        "5000.0, 500.0",
+        "10000.0, 1500.0"
+    })
+    void testCalculateDiscount_Parameterized(double subtotal, double expected) {
+        assertEquals(expected, service.calculateDiscount(subtotal), 0.001);
+    }
+
     // ==========================================
     // 3. UNIT TEST CHO HÀM 3: calculateShippingFee() (Ít nhất 3 tests)
     // ==========================================
@@ -107,6 +143,16 @@ public class SalesServiceTest {
         assertEquals(0.0, service.calculateShippingFee(5000.0), 0.001);
     }
 
+    @Test
+    @DisplayName("calculateShippingFee: Ném ngoại lệ khi subtotal âm (Exception test)")
+    void testCalculateShippingFee_NegativeSubtotal_ThrowsException() {
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> service.calculateShippingFee(-50.0)
+        );
+        assertEquals("Subtotal cannot be negative", ex.getMessage());
+    }
+
     // ==========================================
     // 4. UNIT TEST CHO HÀM 4: calculateTotal() (Ít nhất 2 tests)
     // ==========================================
@@ -123,6 +169,15 @@ public class SalesServiceTest {
     void testCalculateTotal_HighValueProduct() {
         Product p = new Product("P02", "HighEnd Laptop", 3000.0, 2);
         assertEquals(5400.0, service.calculateTotal(p), 0.001);
+    }
+
+    @Test
+    @DisplayName("calculateTotal: Ném ngoại lệ khi Product bị null (Exception test)")
+    void testCalculateTotal_NullProduct_ThrowsException() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> service.calculateTotal(null)
+        );
     }
 
     // ==========================================
@@ -150,7 +205,13 @@ public class SalesServiceTest {
     @Test
     @DisplayName("classifyCustomer: total >= 10000 (10000.0) -> VIP")
     void testClassifyCustomer_Vip() {
-        // Mốc 10000.0 trở lên phải là VIP (Code của cô đang dính bug B05 trả về GOLD!)
+        // Mốc 10000.0 trở lên phải là VIP (Sửa lỗi B05)
         assertEquals("VIP", service.classifyCustomer(10000.0));
+    }
+
+    @Test
+    @DisplayName("classifyCustomer: total cao (15000.0) -> VIP")
+    void testClassifyCustomer_VipHigh() {
+        assertEquals("VIP", service.classifyCustomer(15000.0));
     }
 }
